@@ -1,0 +1,106 @@
+1)SELECT COUNT(*)
+ 	 FROM [Prova Weekly].[dbo].[VERBALE]
+2)SELECT [idanagrafica], 
+	Count(*)
+  	FROM [Prova Weekly].[dbo].[VERBALE]
+  	Group by [idanagrafica]
+3)SELECT [idviolazione],
+	Count(*)
+  	FROM [Prova Weekly].[dbo].[VERBALE]
+  	Group by [idviolazione]
+4)SELECT [idanagrafica], 
+  	SUM(DecurtamentoPunti)
+  	FROM [Prova Weekly].[dbo].[VERBALE]
+  	Group by [idanagrafica]
+5)SELECT [Cognome],
+[Nome],
+[DataViolazione],
+[IndirizzoViolazione],
+[Importo],
+[DecurtamentoPunti]
+FROM [Prova Weekly].[dbo].[VERBALE]
+
+
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	WHERE Città='Palermo'
+6)SELECT [Cognome],
+[Nome],
+[Indirizzo],
+[DataViolazione],
+[Importo],
+[DecurtamentoPunti]
+FROM [Prova Weekly].[dbo].[VERBALE]
+
+
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	WHERE DataViolazione BETWEEN '2009-02-01' AND '2009-07-01'
+
+7)SELECT  
+[Cognome],
+[Nome],
+SUM(Importo) AS ImportoTotale
+FROM [Prova Weekly].[dbo].[VERBALE]
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	Group by verbale.idanagrafica,anagrafica.cognome,anagrafica.nome
+8)SELECT  
+[Cognome],
+[Nome],
+[Città]
+FROM [Prova Weekly].[dbo].[VERBALE]
+
+
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	
+	Where città='Palermo'
+9)DECLARE @DataViolazione DATE = '2024-02-09'; 
+
+SELECT  
+[DataViolazione],
+[Importo],
+[DecurtamentoPunti]
+FROM [Prova Weekly].[dbo].[VERBALE]
+
+
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	Where DataViolazione=@DataViolazione
+10)
+SELECT  
+[Nominativo_Agente],
+Count([Nominativo_agente]) as TotaleVerbali
+FROM [Prova Weekly].[dbo].[VERBALE]
+
+
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	GROUP BY Nominativo_Agente
+
+11)
+
+SELECT  
+[Cognome],
+[Nome],
+[Indirizzo],
+[DataViolazione],
+[Importo],
+[DecurtamentoPunti]
+
+FROM [Prova Weekly].[dbo].[VERBALE]
+
+
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	
+	Where DecurtamentoPunti>5
+12)
+SELECT  
+[Cognome],
+[Nome],
+[Indirizzo],
+[DataViolazione],
+[Importo],
+[DecurtamentoPunti]
+
+FROM [Prova Weekly].[dbo].[VERBALE]
+	LEFT JOIN ANAGRAFICA ON	VERBALE.idanagrafica=ANAGRAFICA.idanagrafica
+	Where importo>400
+
+
+
